@@ -11,7 +11,7 @@
 #
 default: &default
   adapter: mysql2
-  encoding: utf8
+  encoding: utf-8
   pool: 5
   username: root
   password:
@@ -48,7 +48,9 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
   database: tasklist2_production
   username: tasklist2
   password: <%= ENV['TASKLIST2_DATABASE_PASSWORD'] %>
