@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
+
+  root to: 'toppages#index'
+  
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  
   root to: 'tasks#index'
-  # リクエストをどのコントローラで処理するかの道標
   resources :tasks
   
-  # resources :posts
-  # /posts       => posts#index
-  # /posts/:id   => posts#show
-  # /posts(POST) => posts#create
-  # /posts/:id(DELETE) => posts#destroy
-  # /posts/:id(PUT)    => posts#update
+  get 'signup', to:'users#new'
+  resources :users, only: [:index, :show, :new, :create]
+  
 end
